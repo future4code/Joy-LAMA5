@@ -47,6 +47,14 @@ export class UserBusiness {
 
     async getUserByEmail(user: LoginInputDTO) {
 
+        if (!user.email || !user.password) {
+            throw new MissingFieldsToComplete();
+        }
+
+        if (!user.email.includes("@")) {
+            throw new invalidEmail();
+        }
+
         const userDatabase = new UserDatabase();
         const userFromDB = await userDatabase.getUserByEmail(user.email);
 
