@@ -1,4 +1,6 @@
 import * as jwt from "jsonwebtoken";
+import dotenv from "dotenv"
+
 
 export class Authenticator {
   public generateToken(input: AuthenticationData,
@@ -24,9 +26,17 @@ export class Authenticator {
     };
     return result;
   }
+
+  public getTokenData = (token: string): AuthenticationData => {
+
+    const payload = jwt.verify(token, process.env.JWT_KEY as string) as any
+    const result: AuthenticationData = { id: payload.id }
+
+    return result
+  }
 }
 
-interface AuthenticationData {
+export interface AuthenticationData {
   id: string;
   role?: string;
 }
