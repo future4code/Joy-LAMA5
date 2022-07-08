@@ -1,4 +1,3 @@
-// id, week_day, start_time, end_time, band_id
 export class Show {
     constructor(
         private id: string,
@@ -75,7 +74,7 @@ export interface show{
 }
 
 export interface ShowInputDTO {
-    weekDay: string,
+    weekDay: WeekDay,
     startTime: number,
     endTime: number,
     bandId: string
