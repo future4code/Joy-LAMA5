@@ -36,4 +36,22 @@ export class ShowDatabase extends BaseDatabase {
         }
     }
 
+    public async getShowsByHour(show: show): Promise<any>{
+        try {
+
+            const result = await this.getConnection()
+                .select("*")
+                .from(ShowDatabase.TABLE_NAME)
+                .where({
+                    'week_day': show.weekDay,
+                    'start_time': show.startTime
+                })
+            
+                return result
+            
+        } catch (error: any) {
+            throw new BaseError(error.statusCode, error.sqlMessage || error.message)
+        }
+    }
+
 }
