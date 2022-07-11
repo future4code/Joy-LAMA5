@@ -20,12 +20,12 @@ Através dos endpoints do projeto é possível realizar as seguintes ações no 
 
 → Pegar todos os shows de uma data;
 
+Utilizamos o MySQL para criação do nosso banco de dados através do queries.sql no VSCode, e também o Typescript para a construção da lógica dos enpoints da nossa API.
+
 # QUEM FEZ
 
 ### - [Laura Lanna](https://github.com/laura-lannab)
 ### - [Natalia Alves](https://github.com/nataliavalins-fga)
-
-Utilizamos o MySQL para criação do nosso banco de dados através do queries.sql no VSCode, e também o Typescript para a construção da lógica dos enpoints da nossa API.
 
 ## Como usar o projeto localmente:
 
