@@ -1,4 +1,109 @@
 # Labenu Music Awards
-Como você deve saber muito bem, o nosso querido chefinho Astrodev é uma pessoa com Networking incrível e ele conhece vários artistas estrelados. Além disso, ele também é um grande ~~megalomaníaco~~ visionário e está planejando fazer um grande evento: o **LAMA**, *Labenu Musical Awards*, um festival  com várias bandas famosas para a formatura da sua turma e, no final, vocês podem eleger a banda que mais gostaram! Entretanto, na opinião dele, vocês só serão merecedores se entregarem um sistema impecável que permita o gerenciamento completo desses shows.
 
-Para isso já deixamos algumas tabelas prontas para vocês não precisarem se preocupar com a modelagem do banco. Deixamos também um template do projeto já com a estrutura da parte de usuários. Vocês podem usá-las a vontade, mas, se quiser fazer do zero sem esse auxílio, também pode.
+<img src= "https://uploads-ssl.webflow.com/5e790d30d198385b09366d8f/61af643ee11eb8a08137d937_Logo%20com%20icone.svg" width="300" height="180">
+
+### Projeto desenvolvido no bootcamp da Labenu para criar o banco de dados de um festival, utilizando uma API para fazer o cadastro das bandas, shows e usuários.
+
+# DESCRIÇÃO DO PROJETO:
+
+Através dos endpoints do projeto é possível realizar as seguintes ações no banco de dados, que são as funcionalidades básicas propostas:
+
+→ Cadastro de Usuário;
+
+→ Login;
+
+→ Registrar banda;
+
+→ Visualizar detalhes da banda;
+
+→ Adicionar um show a um dia;
+
+→ Pegar todos os shows de uma data;
+
+Utilizamos o MySQL para criação do nosso banco de dados através do queries.sql no VSCode, e também o Typescript para a construção da lógica dos enpoints da nossa API.
+
+## Como usar o projeto localmente:
+
+Faça o clone do respositório através do GitClone do GitHub e do Git na sua máquina. Após criar a pasta do repositório com os arquivos, abra o terminal Git no VSCode e rode o comando:
+
+```bash
+npm install 
+```
+Já existe um arquivo rest para testar os endpoints, mas se desejar também é possível realizar os testes através do Postman rodando nos scripts npm o comando dev start que roda o servidor localmente em:  http://localhost:3003
+
+## Referências da API:
+Aqui listaremos a documentação dos endpoints da API e seu comportamento esperado.
+
+### endpoint que cadastra usuários
+POST  /signup
+
+Neste endpoint é necessário passar as seguintes informações no body da requisição. 
+```bash
+{   
+    "email": "fulano@lama.com";
+    "password": "258963";
+    "name": "Fulano da Silva";
+    "role": "ADMIN" ou "NORMAL";
+}
+```
+
+
+### endpoint login
+POST  /login
+
+Neste endpoint é necessário passar as seguintes informações no body da requisição. 
+
+```bash
+{
+     "email": "fulano@lama.com";
+     "password": "258963";
+}
+```
+
+### endpoint registrar banda
+POST  /register
+
+Neste endpoint é necessário passar as seguintes informações no body da requisição.
+```bash
+{
+    "id": "string",
+    "name": "Kings Of Leon",
+    "musicGenre": "Rock",
+    "responsible": "ADMIN" ou "NORMAL"  
+}
+```
+
+### endpoint pegar bandas por id
+GET  /band/id
+
+Neste endpoint é possível buscar bandas cadastradas por id.
+
+
+### endpoint para cadastrar show 
+POST /add
+
+Neste endpoint é necesário enviar as seguintes informações no body da requisição.
+```bash
+{
+    "weekDay": "FRIDAY" ou "SATURDAY" ou "SUNDAY",
+    "startTime": 10h,
+    "endTime": 11h,
+    "bandId": "string"
+}
+```
+
+### endpoint para pegar show por data
+GET /catch?date=FRIDAY
+
+
+## Possiveis mensagens de erro
+
+A API pode retornar as seguintes mensagens de erro de acordo com as falhas na requisição:
+
+```bash
+400: Bad Request
+404: Not Found
+500: Internal Server Error
+
+```
+
