@@ -1,12 +1,13 @@
 import knex from "knex";
-import Knex from "knex";
+import dotenv from 'dotenv'
 
+dotenv.config()
 
 export abstract class BaseDatabase {
 
-    private static connection: Knex | null = null;
+    private static connection: knex | null = null;
 
-    protected getConnection(): Knex {
+    protected getConnection(): knex {
         if (!BaseDatabase.connection) {
             BaseDatabase.connection = knex({
                 client: "mysql",
@@ -16,6 +17,7 @@ export abstract class BaseDatabase {
                     user: process.env.DB_USER,
                     password: process.env.DB_PASSWORD,
                     database: process.env.DB_DATABASE_NAME,
+                    multipleStatements: true
                 },
             });
         }
